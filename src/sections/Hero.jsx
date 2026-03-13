@@ -5,10 +5,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagneticBtn from "../components/MagneticBtn";
 import GradientOrb from "../components/GradientOrb";
 import TextScramble from "../components/TextScramble";
+import NoiseOverlay from "../components/NoiseOverlay";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ROLES = ["FULL STACK DEVELOPER", "AI SYSTEMS BUILDER", "BACKEND ENGINEER", "OPEN SOURCE DEV"];
+const ROLES = ["FRONT END DEVELOPER", "AI SYSTEMS BUILDER", "BACKEND BASICS", "OPEN SOURCE DEV"];
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -125,6 +126,9 @@ const Hero = () => {
       {/* Ambient orbs */}
       <GradientOrb x="15%" y="25%" size={700} color="#CAFF00" opacity={0.035} />
       <GradientOrb x="80%" y="70%" size={500} color="#CAFF00" opacity={0.025} />
+
+      {/* Animated film grain — the premium texture layer */}
+      <NoiseOverlay opacity={0.038} speed={2} zIndex={1} />
 
       {/* Vertical grid lines */}
       <div ref={gridRef} className="absolute inset-0 pointer-events-none flex">

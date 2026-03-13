@@ -138,7 +138,7 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-          <p className="label text-muted">© 2025 Aditya Seswani</p>
+          <p className="label text-muted">© 2026 Aditya Seswani</p>
         </div>
       </div>
 
