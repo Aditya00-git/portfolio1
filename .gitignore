@@ -1,0 +1,33 @@
+# Dependencies — NEVER commit this
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Vite
+.vite/
+vite.config.js.timestamp-*
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
