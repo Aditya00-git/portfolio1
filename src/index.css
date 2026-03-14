@@ -14,6 +14,12 @@
 /* ─── Reset ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { overflow-x: hidden; scroll-behavior: auto; }
+
+/* Hide default cursor on desktop — SplashCursor replaces it */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+}
+
 body {
   background: var(--charcoal);
   color: var(--offwhite);

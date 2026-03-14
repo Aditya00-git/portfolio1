@@ -12,6 +12,7 @@ import About         from "./sections/About";
 import Projects      from "./sections/Projects";
 import Experience    from "./sections/Experience";
 import Contact       from "./sections/Contact";
+import SplashCursor from "./components/SplashCursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +41,7 @@ const App = () => {
         transformOrigin: "bottom",
       }} />
 
-      <CustomCursor />
+      <SplashCursor />
       <Navbar />
 
       <main>
