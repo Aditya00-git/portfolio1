@@ -4,29 +4,31 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "node node_modules/vite/bin/vite.js build",
     "preview": "node node_modules/vite/bin/vite.js preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "gsap": "^3.12.5",
+    "@formspree/react": "^2.5.1",
     "@gsap/react": "^2.1.1",
-    "lenis": "^1.1.14",
-    "framer-motion": "^11.3.19",
-    "react-responsive": "^9.0.2",
-    "react-scroll": "^1.9.0",
     "@iconify/react": "^5.0.2",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.4.0",
-    "@formspree/react": "^2.5.1"
+    "framer-motion": "^11.3.19",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.14",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-responsive": "^9.0.2",
+    "react-scroll": "^1.9.0",
+    "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.4.1",
-    "tailwindcss": "^3.4.10",
+    "autoprefixer": "^10.4.20",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.41",
-    "autoprefixer": "^10.4.20"
+    "tailwindcss": "^3.4.10",
+    "vite": "^5.4.1"
   }
 }
