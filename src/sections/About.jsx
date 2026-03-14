@@ -6,6 +6,7 @@ import SplitLines from "../components/SplitLines";
 import GradientOrb from "../components/GradientOrb";
 import TextScramble from "../components/TextScramble";
 import { skills } from "../constants";
+import isMobile from "../utils/isMobile";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,16 +32,20 @@ and software that solves real problems.`;
   ];
 
   useGSAP(() => {
-    // ── Section scale-pin exit ──
-    gsap.to(sectionRef.current, {
-      scale: 0.93,
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "bottom 65%",
-        end: "bottom 5%",
-        scrub: true,
-      },
-    });
+    const mobile = isMobile();
+
+    // ── Section scale-pin exit — skip on mobile (causes repaint lag) ──
+    if (!mobile) {
+      gsap.to(sectionRef.current, {
+        scale: 0.93,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "bottom 65%",
+          end: "bottom 5%",
+          scrub: true,
+        },
+      });
+    }
 
     // ── Image clip-path wipe IN ──
     gsap.fromTo(imgWrapRef.current,
@@ -53,29 +58,33 @@ and software that solves real problems.`;
       }
     );
 
-    // ── Image inner parallax (moves slower than wrapper) ──
-    gsap.to(imgRef.current, {
-      yPercent: -15,
-      ease: "none",
-      scrollTrigger: {
-        trigger: imgWrapRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1.5,
-      },
-    });
+    // ── Image inner parallax — skip on mobile ──
+    if (!mobile) {
+      gsap.to(imgRef.current, {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: imgWrapRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.5,
+        },
+      });
+    }
 
-    // ── Horizontal marquee drift ──
-    gsap.to(driftRef.current, {
-      xPercent: -20,
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
+    // ── Horizontal marquee drift — skip on mobile ──
+    if (!mobile) {
+      gsap.to(driftRef.current, {
+        xPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    }
 
     // ── Stats — counting animation ──
     statsRef.current.forEach((el, i) => {
@@ -96,7 +105,6 @@ and software that solves real problems.`;
           },
         }
       );
-      // Card reveal
       gsap.fromTo(el,
         { y: 40, opacity: 0 },
         {
@@ -116,17 +124,19 @@ and software that solves real problems.`;
       }
     );
 
-    // ── Section header parallax ──
-    gsap.to(".about-heading", {
-      yPercent: -20,
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        end: "center top",
-        scrub: 1.5,
-      },
-    });
+    // ── Section header parallax — skip on mobile ──
+    if (!mobile) {
+      gsap.to(".about-heading", {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "center top",
+          scrub: 1.5,
+        },
+      });
+    }
   });
 
   return (
@@ -167,8 +177,7 @@ and software that solves real problems.`;
               className="absolute inset-0"
               style={{ top: "-10%", height: "120%" }}
             >
-             
-              <img src="/images/afinal 3.png" className="w-full h-full object-cover" /> 
+              <img src="/images/git1.jpg" className="w-full h-full object-cover" /> 
               <div className="w-full h-full flex flex-col items-center justify-center gap-4">
                 <div style={{
                   width: 96, height: 96, borderRadius: "50%",

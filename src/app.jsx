@@ -2,6 +2,7 @@ import ReactLenis from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import isMobile from "./utils/isMobile";
 
 import CustomCursor  from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
@@ -27,7 +28,7 @@ const App = () => {
   });
 
   return (
-    <ReactLenis root options={{ lerp: 0.07, duration: 1.5, smoothTouch: true }}>
+    <ReactLenis root options={{ lerp: 0.07, duration: 1.5, smoothTouch: false, prevent: isMobile() ? () => true : undefined }}>
       {/* Scroll progress bar */}
       <ScrollProgress />
 

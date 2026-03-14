@@ -6,10 +6,11 @@ import MagneticBtn from "../components/MagneticBtn";
 import GradientOrb from "../components/GradientOrb";
 import TextScramble from "../components/TextScramble";
 import NoiseOverlay from "../components/NoiseOverlay";
+import isMobile from "../utils/isMobile";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ROLES = ["FRONT END DEVELOPER", "AI SYSTEMS BUILDER", "BACKEND BASICS", "OPEN SOURCE DEV"];
+const ROLES = ["FULL STACK DEVELOPER", "AI SYSTEMS BUILDER", "BACKEND ENGINEER", "OPEN SOURCE DEV"];
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -78,31 +79,34 @@ const Hero = () => {
       { opacity: 0 }, { opacity: 1, duration: 0.6 }, "-=0.3"
     );
 
-    // Multi-layer parallax on scroll
-    gsap.to(nameRef.current, {
-      yPercent: -30, ease: "none",
-      scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 1.2 },
-    });
-    gsap.to(lastRef.current, {
-      yPercent: -20, ease: "none",
-      scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 1.8 },
-    });
-    gsap.to(gridRef.current, {
-      yPercent: -12, ease: "none",
-      scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 2.2 },
-    });
-    gsap.to([statusRef.current, badgeRef.current], {
-      yPercent: 28, ease: "none",
-      scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 1 },
-    });
+    // Multi-layer parallax on scroll — skip on mobile
+    if (!isMobile()) {
+      gsap.to(nameRef.current, {
+        yPercent: -30, ease: "none",
+        scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 1.2 },
+      });
+      gsap.to(lastRef.current, {
+        yPercent: -20, ease: "none",
+        scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 1.8 },
+      });
+      gsap.to(gridRef.current, {
+        yPercent: -12, ease: "none",
+        scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 2.2 },
+      });
+      gsap.to([statusRef.current, badgeRef.current], {
+        yPercent: 28, ease: "none",
+        scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 1 },
+      });
+    }
     gsap.to(scrollRef.current, {
       opacity: 0, ease: "none",
       scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "25% top", scrub: true },
     });
   });
 
-  // Mouse tilt on section
+  // Mouse tilt on section — desktop only
   useEffect(() => {
+    if (isMobile()) return;
     const s = sectionRef.current;
     if (!s) return;
     const onMove = (e) => {
