@@ -177,19 +177,7 @@ and software that solves real problems.`;
               className="absolute inset-0"
               style={{ top: "-10%", height: "120%" }}
             >
-              <img src="/images/git1.jpg" className="w-full h-full object-cover" /> 
-              <div className="w-full h-full flex flex-col items-center justify-center gap-4">
-                <div style={{
-                  width: 96, height: 96, borderRadius: "50%",
-                  background: "rgba(202,255,0,0.08)",
-                  border: "1px solid rgba(202,255,0,0.25)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontFamily: "'Bebas Neue', sans-serif", fontSize: 34, color: "#CAFF00",
-                }}>AS</div>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: "#444", textAlign: "center", lineHeight: 1.9 }}>
-                  Add your photo<br />/public/images/aditya.jpg
-                </p>
-              </div>
+              <img src={`${import.meta.env.BASE_URL}images/git1.jpg`} className="w-full h-full object-cover" />
             </div>
             {/* Lime corner accent */}
             <div className="absolute bottom-0 left-0 w-24 h-24" style={{ background: "linear-gradient(135deg,#CAFF00,transparent 60%)", opacity: 0.12 }} />

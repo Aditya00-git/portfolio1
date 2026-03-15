@@ -199,12 +199,14 @@ const Hero = () => {
           {[
             { label: "GitHub ↗",   href: "https://github.com/Aditya00-git" },
             { label: "LinkedIn ↗", href: "https://tinyurl.com/35u8nepx" },
-            { label: "Resume ↓",   href: "Adiii.pdf", download: true },
+            { label: "Resume ↓",   href: `${import.meta.env.BASE_URL}Adiinew.pdf`, download: "Aditya_Seswani_Resume.pdf" },
           ].map((s) => (
             <MagneticBtn key={s.label} strength={0.4}>
               <a
                 href={s.href}
-                {...(s.download ? { download: true } : { target: "_blank", rel: "noreferrer" })}
+                target={s.download ? "_self" : "_blank"}
+                rel={s.download ? undefined : "noreferrer"}
+                download={s.download || undefined}
                 className="label block px-4 py-2 rounded-full transition-all duration-300"
                 style={{
                   color: "rgba(240,237,230,0.35)",
