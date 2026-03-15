@@ -17,7 +17,6 @@ const Navbar = () => {
   const [visible, setVisible] = useState(true);
 
   useGSAP(() => {
-    // Start panel hidden above viewport
     gsap.set(panelRef.current, { yPercent: -100 });
     gsap.set([...linksRef.current.filter(Boolean), metaRef.current], {
       autoAlpha: 0, y: 24,
@@ -39,7 +38,6 @@ const Navbar = () => {
       .to(iconBotRef.current, { rotate: -45, y: -4, duration: 0.3, ease: "power2.inOut" }, "<");
   }, []);
 
-  // Hide header on scroll down
   useEffect(() => {
     let last = 0;
     const onScroll = () => {
@@ -61,18 +59,16 @@ const Navbar = () => {
 
   return (
     <>
-      {/* ── Full-screen menu panel ── */}
       <div
         ref={panelRef}
         className="fixed inset-0 z-50 flex flex-col px-8 md:px-16"
         style={{
           background: "#0D0D0D",
-          paddingTop: 88,    // below the header bar
+          paddingTop: 88,   
           paddingBottom: 40,
           overflow: "hidden",
         }}
       >
-        {/* Nav links — take remaining space but don't overflow */}
         <nav className="flex flex-col justify-center flex-1 gap-0 min-h-0">
           {sections.map((s, i) => (
             <div
@@ -96,7 +92,6 @@ const Navbar = () => {
                   className="flex-1 uppercase transition-colors duration-300 group-hover:text-lime"
                   style={{
                     fontFamily: "'Bebas Neue', sans-serif",
-                    // Responsive size — fits 5 items without overflow
                     fontSize: "clamp(28px, 5.5vw, 72px)",
                     lineHeight: 1,
                     color: "#F0EDE6",
@@ -113,7 +108,6 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Socials + copyright — always visible at bottom */}
         <div
           ref={metaRef}
           className="flex flex-col md:flex-row md:items-end justify-between gap-4 shrink-0"
@@ -141,8 +135,6 @@ const Navbar = () => {
           <p className="label text-muted">© 2026 Aditya Seswani</p>
         </div>
       </div>
-
-      {/* ── Top header bar ── */}
       <header
         className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-8 md:px-16 py-5 transition-transform duration-500"
         style={{
@@ -150,7 +142,6 @@ const Navbar = () => {
           background: open ? "transparent" : "transparent",
         }}
       >
-        {/* Logo */}
         <div
           className="label transition-colors duration-300"
           style={{ color: open ? "rgba(240,237,230,0.6)" : "rgba(240,237,230,0.6)" }}
@@ -158,7 +149,6 @@ const Navbar = () => {
           Aditya.dev
         </div>
 
-        {/* Burger */}
         <MagneticBtn strength={0.45}>
           <button
             onClick={toggle}

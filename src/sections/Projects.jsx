@@ -20,7 +20,6 @@ const Projects = () => {
   const [hovered, setHovered]   = useState(null);
 
   useGSAP(() => {
-    // ── Section heading parallax ──
     gsap.to(titleRef.current, {
       yPercent: -30,
       ease: "none",
@@ -32,7 +31,6 @@ const Projects = () => {
       },
     });
 
-    // ── Each row slides in staggered ──
     rowRefs.current.forEach((el, i) => {
       if (!el) return;
       gsap.fromTo(el,
@@ -44,7 +42,6 @@ const Projects = () => {
       );
     });
 
-    // ── Project index numbers count in ──
     numRefs.current.forEach((el, i) => {
       if (!el) return;
       gsap.fromTo(el,
@@ -56,7 +53,6 @@ const Projects = () => {
       );
     });
 
-    // ── Cursor-follow preview — quickTo ──
     moveX.current = gsap.quickTo(previewRef.current, "x", { duration: 1.1, ease: "power3.out" });
     moveY.current = gsap.quickTo(previewRef.current, "y", { duration: 1.3, ease: "power3.out" });
   });
@@ -91,17 +87,14 @@ const Projects = () => {
       className="py-24 px-8 md:px-16"
       style={{ background: "#0D0D0D", overflow: "hidden" }}
     >
-      {/* Ambient orb */}
       <GradientOrb x="85%" y="40%" size={500} color="#CAFF00" opacity={0.03} />
 
-      {/* ── Header ── */}
       <div className="flex items-center gap-4 mb-4">
         <span className="index-num">03</span>
         <div className="rule flex-1" />
         <span className="label text-muted">Selected Work</span>
       </div>
 
-      {/* Title with parallax */}
       <div style={{ overflow: "hidden" }}>
         <TextScramble
           text="Projects"
@@ -112,7 +105,6 @@ const Projects = () => {
         />
       </div>
 
-      {/* ── Project list ── */}
       <div className="relative" onMouseMove={onMove}>
         {projects.map((p, i) => (
           <a
@@ -127,14 +119,12 @@ const Projects = () => {
             onMouseLeave={() => onLeave(i)}
             data-cursor
           >
-            {/* Hover fill — scaleY from bottom */}
             <div
               ref={el => (overlayRefs.current[i] = el)}
               className="absolute inset-0 pointer-events-none"
               style={{ background: "#161616", transform: "scaleY(0)", transformOrigin: "bottom", zIndex: 0 }}
             />
 
-            {/* Left — number + title */}
             <div className="relative z-10 flex items-center gap-6 flex-1 min-w-0">
               <span
                 ref={el => (numRefs.current[i] = el)}
@@ -151,7 +141,6 @@ const Projects = () => {
               </div>
             </div>
 
-            {/* Right — tags + year + arrow */}
             <div className="relative z-10 flex items-center gap-6 shrink-0">
               <div className="hidden md:flex flex-wrap gap-2 justify-end max-w-xs">
                 {p.tags.slice(0, 3).map((t, j) => (
@@ -175,7 +164,6 @@ const Projects = () => {
 
         <div className="rule" />
 
-        {/* ── Floating cursor preview card ── */}
         <div
           ref={previewRef}
           className="fixed top-0 left-0 z-50 pointer-events-none hidden md:flex flex-col justify-end rounded-2xl overflow-hidden"
@@ -206,7 +194,6 @@ const Projects = () => {
         </div>
       </div>
 
-      {/* ── GitHub CTA ── */}
       <div className="mt-14 flex items-center gap-6">
         <a
           href="https://github.com/Aditya00-git"

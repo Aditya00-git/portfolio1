@@ -4,8 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Each line slides up from behind a clip mask — cinema-grade reveal
 const SplitLines = ({ text, className = "", delay = 0, trigger = true, style = {} }) => {
   const containerRef = useRef(null);
   const lineRefs = useRef([]);

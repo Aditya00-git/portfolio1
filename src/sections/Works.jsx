@@ -83,14 +83,12 @@ and full-stack systems.`;
             onMouseEnter={() => handleEnter(index)}
             onMouseLeave={() => handleLeave(index)}
           >
-            {/* Hover overlay */}
             <div
               ref={(el) => (overlayRefs.current[index] = el)}
               className="absolute inset-0 hidden md:block -z-10"
               style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)", background: "#0a0a0a" }}
             />
 
-            {/* Title row */}
             <div className="flex justify-between items-center px-8 sm:px-12 text-black transition-all duration-500 md:group-hover:px-14 md:group-hover:text-white">
               <div className="flex items-center gap-4">
                 {project.featured && (
@@ -104,8 +102,6 @@ and full-stack systems.`;
               </div>
               <Icon icon="lucide:arrow-up-right" className="size-5 md:size-6 shrink-0" />
             </div>
-
-            {/* Tech stack */}
             <div className="flex flex-wrap px-8 sm:px-12 text-xs uppercase tracking-wider gap-x-4 gap-y-1 mt-1 transition-all duration-500 md:group-hover:px-14">
               {project.frameworks.map((f) => (
                 <p key={f.id} className="text-black/50 transition-colors duration-500 md:group-hover:text-white/40">
@@ -116,7 +112,6 @@ and full-stack systems.`;
           </a>
         ))}
 
-        {/* Floating preview — desktop only */}
         <div
           ref={previewRef}
           className="fixed -top-1/2 left-0 z-50 pointer-events-none hidden md:block opacity-0 rounded-2xl overflow-hidden"
@@ -144,7 +139,6 @@ and full-stack systems.`;
         </div>
       </div>
 
-      {/* GitHub link */}
       <div className="px-8 sm:px-12 mt-8 mb-16">
         <a
           href="https://github.com/Aditya00-git"

@@ -1,17 +1,13 @@
 import { useEffect, useRef } from "react";
 import isMobile from "../utils/isMobile";
 
-/**
- * Custom 3-layer diamond cursor.
- * Completely disabled on mobile/touch — no rAF loop, no DOM nodes rendered.
- */
 const CustomCursor = () => {
   const dotRef   = useRef(null);
   const d1Ref    = useRef(null);
   const d2Ref    = useRef(null);
 
   useEffect(() => {
-    if (isMobile()) return; // touch devices have no cursor
+    if (isMobile()) return; 
 
     const dot = dotRef.current;
     const d1  = d1Ref.current;
@@ -27,13 +23,10 @@ const CustomCursor = () => {
     window.addEventListener("mousemove", onMove);
 
     const tick = () => {
-      // Dot snaps
       dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
-      // Inner diamond lerps
       d1x += (mx - d1x) * 0.12;
       d1y += (my - d1y) * 0.12;
       d1.style.transform = `translate(${d1x - 16}px, ${d1y - 16}px) rotate(45deg)`;
-      // Outer diamond lerps slower
       d2x += (mx - d2x) * 0.06;
       d2y += (my - d2y) * 0.06;
       d2.style.transform = `translate(${d2x - 26}px, ${d2y - 26}px) rotate(45deg)`;
@@ -41,7 +34,6 @@ const CustomCursor = () => {
     };
     rafId = requestAnimationFrame(tick);
 
-    // Hover expand
     const addHover = () => {
       document.querySelectorAll("a,[data-cursor],button").forEach(el => {
         el.addEventListener("mouseenter", () => {
@@ -71,7 +63,7 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Core lime dot */}
+      
       <div ref={dotRef} style={{
         position: "fixed", top: 0, left: 0, zIndex: 999998,
         width: 8, height: 8, borderRadius: "50%",
@@ -80,7 +72,7 @@ const CustomCursor = () => {
         willChange: "transform",
         transition: "opacity 0.2s",
       }} />
-      {/* Inner diamond */}
+      
       <div ref={d1Ref} style={{
         position: "fixed", top: 0, left: 0, zIndex: 999997,
         width: 32, height: 32,
@@ -89,7 +81,7 @@ const CustomCursor = () => {
         willChange: "transform",
         transition: "width 0.25s, height 0.25s, border-color 0.25s",
       }} />
-      {/* Outer ghost diamond */}
+      
       <div ref={d2Ref} style={{
         position: "fixed", top: 0, left: 0, zIndex: 999996,
         width: 52, height: 52,

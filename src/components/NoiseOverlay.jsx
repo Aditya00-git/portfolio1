@@ -1,18 +1,12 @@
 import { useEffect, useRef } from "react";
 import isMobile from "../utils/isMobile";
 
-/**
- * Animated film-grain overlay.
- * DISABLED on mobile — canvas pixel manipulation is too CPU-heavy on phones.
- * On desktop: redraws every `speed` frames at reduced resolution for perf.
- */
 const NoiseOverlay = ({ opacity = 0.04, speed = 3, zIndex = 2 }) => {
   const canvasRef = useRef(null);
   const rafRef    = useRef(null);
   const frameRef  = useRef(0);
 
   useEffect(() => {
-    // Kill entirely on mobile
     if (isMobile()) return;
 
     const canvas = canvasRef.current;
@@ -20,7 +14,6 @@ const NoiseOverlay = ({ opacity = 0.04, speed = 3, zIndex = 2 }) => {
     const ctx = canvas.getContext("2d");
 
     const resize = () => {
-      // Draw at 50% resolution then scale up via CSS — halves pixel count = 4x faster
       canvas.width  = Math.floor(canvas.offsetWidth  / 2);
       canvas.height = Math.floor(canvas.offsetHeight / 2);
     };
@@ -49,8 +42,6 @@ const NoiseOverlay = ({ opacity = 0.04, speed = 3, zIndex = 2 }) => {
     rafRef.current = requestAnimationFrame(draw);
     return () => { cancelAnimationFrame(rafRef.current); ro.disconnect(); };
   }, [speed]);
-
-  // Render nothing on mobile
   if (isMobile()) return null;
 
   return (
@@ -59,7 +50,6 @@ const NoiseOverlay = ({ opacity = 0.04, speed = 3, zIndex = 2 }) => {
       style={{
         position: "absolute", inset: 0,
         width: "100%", height: "100%",
-        // imageRendering: pixelated stops browser smoothing the upscaled canvas
         imageRendering: "pixelated",
         opacity, pointerEvents: "none", zIndex,
         mixBlendMode: "screen",

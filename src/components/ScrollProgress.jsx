@@ -3,8 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Thin lime line at top of page showing scroll progress
 const ScrollProgress = () => {
   const barRef = useRef(null);
 

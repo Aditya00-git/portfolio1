@@ -24,8 +24,6 @@ const Hero = () => {
   const badgeRef   = useRef(null);
   const statusRef  = useRef(null);
   const socialsRef = useRef(null);
-
-  // Typing effect
   useEffect(() => {
     let ri = 0, ci = 0, del = false;
     const type = () => {
@@ -45,7 +43,6 @@ const Hero = () => {
   }, []);
 
   useGSAP(() => {
-    // Grid lines fan in
     const tl = gsap.timeline({ delay: 0.5 });
     tl.fromTo(gridRef.current.children,
       { scaleY: 0, transformOrigin: "top" },
@@ -79,7 +76,6 @@ const Hero = () => {
       { opacity: 0 }, { opacity: 1, duration: 0.6 }, "-=0.3"
     );
 
-    // Multi-layer parallax on scroll — skip on mobile
     if (!isMobile()) {
       gsap.to(nameRef.current, {
         yPercent: -30, ease: "none",
@@ -104,7 +100,6 @@ const Hero = () => {
     });
   });
 
-  // Mouse tilt on section — desktop only
   useEffect(() => {
     if (isMobile()) return;
     const s = sectionRef.current;
@@ -127,14 +122,11 @@ const Hero = () => {
       className="relative min-h-screen flex flex-col justify-end pb-16 px-8 md:px-16 pt-32 overflow-hidden"
       style={{ transformStyle: "preserve-3d" }}
     >
-      {/* Ambient orbs */}
       <GradientOrb x="15%" y="25%" size={700} color="#CAFF00" opacity={0.035} />
       <GradientOrb x="80%" y="70%" size={500} color="#CAFF00" opacity={0.025} />
 
-      {/* Animated film grain — the premium texture layer */}
       <NoiseOverlay opacity={0.038} speed={2} zIndex={1} />
 
-      {/* Vertical grid lines */}
       <div ref={gridRef} className="absolute inset-0 pointer-events-none flex">
         {[...Array(9)].map((_, i) => (
           <div key={i} className="absolute top-0 bottom-0 w-px"
@@ -142,18 +134,15 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Top-left status */}
       <div ref={statusRef} className="absolute top-24 left-8 md:left-16 flex items-center gap-2">
         <span className="w-2 h-2 rounded-full" style={{ background: "#CAFF00", boxShadow: "0 0 8px #CAFF00", animation: "hpulse 2s infinite" }} />
         <span className="label text-muted">Available for work</span>
       </div>
 
-      {/* Top-right year */}
       <div ref={badgeRef} className="absolute top-24 right-8 md:right-16 label text-muted">
         2025 — PRESENT
       </div>
 
-      {/* Giant name — clipped lines */}
       <div className="relative select-none mb-0" style={{ zIndex: 1 }}>
         <div style={{ overflow: "hidden" }} ref={nameRef}>
           <TextScramble
@@ -176,7 +165,6 @@ const Hero = () => {
 
       <div ref={lineRef} className="rule my-8" style={{ zIndex: 1 }} />
 
-      {/* Bottom bar */}
       <div ref={descRef} className="flex flex-col md:flex-row md:items-end justify-between gap-8" style={{ zIndex: 1 }}>
         <div>
           <p className="label text-muted mb-2">Role</p>
@@ -194,7 +182,6 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* Magnetic social links */}
         <div ref={socialsRef} className="flex flex-col gap-4 shrink-0">
           {[
             { label: "GitHub ↗",   href: "https://github.com/Aditya00-git" },
@@ -233,7 +220,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll hint */}
       <div ref={scrollRef} className="absolute bottom-8 left-1/2 flex flex-col items-center gap-2"
         style={{ transform: "translateX(-50%)", zIndex: 1 }}>
         <div className="w-px h-14 overflow-hidden" style={{ background: "rgba(240,237,230,0.08)" }}>

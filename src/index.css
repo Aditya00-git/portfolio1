@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Variables ─── */
 :root {
   --lime: #CAFF00;
   --charcoal: #0D0D0D;
@@ -11,11 +10,9 @@
   --muted: #666;
 }
 
-/* ─── Reset ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { overflow-x: hidden; scroll-behavior: auto; }
 
-/* Hide default cursor on desktop — SplashCursor replaces it */
 @media (hover: hover) and (pointer: fine) {
   *, *::before, *::after { cursor: none !important; }
 }
@@ -32,14 +29,11 @@ body {
 ::-webkit-scrollbar-track { background: var(--charcoal); }
 ::-webkit-scrollbar-thumb { background: var(--lime); }
 
-/* ─── Cursor — handled entirely in CustomCursor.jsx (inline styles + rAF) ─── */
 
-/* ─── Lenis ─── */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
 
-/* ─── Typography scale ─── */
 .display-xl {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(80px, 14vw, 200px);
@@ -58,7 +52,6 @@ html.lenis, html.lenis body { height: auto; }
   line-height: 1;
 }
 
-/* ─── label: small caps for nav / indexes ─── */
 .label {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
@@ -67,7 +60,6 @@ html.lenis, html.lenis body { height: auto; }
   font-weight: 300;
 }
 
-/* ─── section-title: large visible sub-heading inside sections ─── */
 .section-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(20px, 3vw, 32px);
@@ -83,7 +75,6 @@ html.lenis, html.lenis body { height: auto; }
   font-weight: 300;
 }
 
-/* ─── Noise grain overlay ─── */
 body::after {
   content: '';
   position: fixed;
@@ -94,17 +85,14 @@ body::after {
   z-index: 99990;
 }
 
-/* ─── Lime glow ─── */
 .lime-glow { text-shadow: 0 0 40px rgba(202,255,0,0.4); }
 .lime-box-glow { box-shadow: 0 0 40px rgba(202,255,0,0.15); }
 
-/* ─── Horizontal rule styled ─── */
 .rule {
   width: 100%; height: 1px;
   background: rgba(240,237,230,0.1);
 }
 
-/* ─── Index number style ─── */
 .index-num {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
@@ -113,15 +101,12 @@ body::after {
   font-weight: 300;
 }
 
-/* text color helpers */
 .text-lime { color: var(--lime); }
 .text-offwhite { color: var(--offwhite); }
 .text-muted { color: var(--muted); }
 
-/* ─── Marquee ─── */
 .marquee-track { white-space: nowrap; }
 
-/* ─── Page transition ─── */
 #page-cover {
   position: fixed; inset: 0;
   background: var(--charcoal);
@@ -129,8 +114,6 @@ body::after {
   transform-origin: bottom;
 }
 
-/* ─── Mobile ─── */
 @media (max-width: 768px) {
   body { cursor: auto; }
-  /* cursor elements hidden on mobile via opacity in JS */
 }

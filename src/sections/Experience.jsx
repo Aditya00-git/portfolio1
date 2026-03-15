@@ -42,7 +42,7 @@ export default function Experience() {
   const lineRef     = useRef(null);
   const dotRefs     = useRef([]);
   const cardRefs    = useRef([]);
-  const connRefs    = useRef([]);   // vertical connector from line to card
+  const connRefs    = useRef([]);   
   const achRefs     = useRef([]);
   const certRefs    = useRef([]);
   const achHeadRef  = useRef(null);
@@ -50,17 +50,15 @@ export default function Experience() {
 
   useLayoutEffect(() => {
     const n           = experience.length;
-    const PIN_SCROLL  = 150 + n * 500;   // total scroll distance while pinned
+    const PIN_SCROLL  = 150 + n * 500;   
 
     const ctx = gsap.context(() => {
 
-      // ── hide everything ──
       gsap.set(lineRef.current,             { scaleX: 0 });
       gsap.set(dotRefs.current,             { scale: 0, autoAlpha: 0 });
       gsap.set(cardRefs.current,            { autoAlpha: 0, y: 30 });
       gsap.set(connRefs.current,            { scaleY: 0 });
 
-      // ── PIN ──
       ScrollTrigger.create({
         trigger : wrapRef.current,
         start   : "top top",
@@ -70,7 +68,6 @@ export default function Experience() {
         anticipatePin: 1,
       });
 
-      // ── master timeline scrubbed to scroll ──
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger : wrapRef.current,
@@ -80,12 +77,9 @@ export default function Experience() {
         },
       });
 
-      // line draws fully across
       tl.to(lineRef.current, { scaleX: 1, ease: "none", duration: n });
 
-      // for each entry: dot, connector, card appear at their x-position moment
       experience.forEach((_, i) => {
-        // when does dot i appear? evenly spaced while line draws
         const insertTime = (i + 0.55) / n * n;   // in tl "duration" units
 
         tl.to(dotRefs.current[i],
@@ -102,7 +96,6 @@ export default function Experience() {
         );
       });
 
-      // ── below-pin sections ──
       achRefs.current.filter(Boolean).forEach((el, i) => {
         gsap.fromTo(el,
           { y: 40, opacity: 0 },
@@ -139,7 +132,6 @@ export default function Experience() {
     <section id="experience" ref={sectionRef} style={{ background: "#111111" }}>
       <GradientOrb x="80%" y="20%" size={500} color="#CAFF00" opacity={0.03} />
 
-      {/* ── Section header ── */}
       <div className="px-8 md:px-16 pt-24 pb-0">
         <div className="flex items-center gap-4 mb-4">
           <span className="index-num">04</span>
@@ -153,7 +145,6 @@ export default function Experience() {
         </div>
       </div>
 
-      {/* ══════════ PINNED HORIZONTAL TIMELINE ══════════ */}
       <div
         ref={wrapRef}
         style={{
@@ -166,7 +157,6 @@ export default function Experience() {
           padding: "0 clamp(32px,8vw,120px)",
         }}
       >
-        {/* Cards row — sit ABOVE the line */}
         <div style={{
           display: "grid",
           gridTemplateColumns: `repeat(${experience.length}, 1fr)`,
@@ -193,7 +183,6 @@ export default function Experience() {
           ))}
         </div>
 
-        {/* Connectors (vertical lines from card bottom → dot) */}
         <div style={{
           display: "grid",
           gridTemplateColumns: `repeat(${experience.length}, 1fr)`,
@@ -215,17 +204,14 @@ export default function Experience() {
           ))}
         </div>
 
-        {/* Horizontal line + dots row */}
         <div style={{ position: "relative", height: 32, marginTop: 0 }}>
 
-          {/* Ghost track */}
           <div style={{
             position: "absolute", top: "50%", left: 0, right: 0,
             height: 1, background: "rgba(240,237,230,0.06)",
             transform: "translateY(-50%)",
           }} />
 
-          {/* Lime growing line */}
           <div
             ref={lineRef}
             style={{
@@ -238,7 +224,6 @@ export default function Experience() {
             }}
           />
 
-          {/* Dots — evenly spaced above the line */}
           <div style={{
             position: "absolute", top: "50%", left: 0, right: 0,
             display: "grid",
@@ -256,14 +241,12 @@ export default function Experience() {
                     position: "relative",
                   }}
                 >
-                  {/* Pulse ring */}
                   <div style={{
                     position: "absolute", width: 20, height: 20, borderRadius: "50%",
                     border: "1px solid rgba(202,255,0,0.4)",
                     background: "#111111",
                     animation: exp.status === "CURRENT" ? "ringPulse 2s ease-in-out infinite" : "none",
                   }} />
-                  {/* Core */}
                   <div style={{
                     width: 8, height: 8, borderRadius: "50%",
                     position: "relative", zIndex: 1,
@@ -276,7 +259,6 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Year labels below line */}
         <div style={{
           display: "grid",
           gridTemplateColumns: `repeat(${experience.length}, 1fr)`,
@@ -303,7 +285,6 @@ export default function Experience() {
         }
       `}</style>
 
-      {/* ══ ACHIEVEMENTS ══ */}
       <div className="px-8 md:px-16 pt-20 mb-24">
         <div ref={achHeadRef} className="flex items-center gap-6 mb-12">
           <div className="h-rule rule flex-1" />
@@ -323,8 +304,6 @@ export default function Experience() {
           ))}
         </div>
       </div>
-
-      {/* ══ CERTIFICATIONS ══ */}
       <div className="px-8 md:px-16 pb-24">
         <div ref={certHeadRef} className="flex items-center gap-6 mb-12">
           <div className="h-rule rule flex-1" />

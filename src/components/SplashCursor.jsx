@@ -880,9 +880,7 @@ function SplashCursor({
     }
 
     function generateColor() {
-      // Tint towards lime (#CAFF00) — mix random hue with lime
       let c = HSVtoRGB(Math.random(), 1.0, 1.0);
-      // Push colour towards lime: boost green, reduce blue
       c.r = (c.r * 0.3 + 0.5) * 0.15;
       c.g = (c.g * 0.3 + 0.8) * 0.15;
       c.b = c.b * 0.05;

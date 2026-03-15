@@ -2,11 +2,6 @@ import { useEffect, useRef } from 'react';
 import { Renderer, Transform, Vec3, Color, Polyline } from 'ogl';
 import isMobile from '../utils/isMobile';
 
-/**
- * Ribbon cursor — silky WebGL trail that follows the mouse.
- * pointer-events: none so all clicks pass through perfectly.
- * Disabled on mobile.
- */
 const RibbonCursor = () => {
   const containerRef = useRef(null);
 
@@ -78,7 +73,6 @@ const RibbonCursor = () => {
       }
     `;
 
-    // Three ribbon strands — slightly offset for a layered look
     const STRANDS = [
       { color: '#CAFF00', thickness: 22, spring: 0.04, friction: 0.88, offset: new Vec3(0, 0, 0) },
       { color: '#CAFF00', thickness: 14, spring: 0.03, friction: 0.86, offset: new Vec3(0.012, 0.012, 0) },
@@ -112,7 +106,7 @@ const RibbonCursor = () => {
 
     resize();
 
-    const mouse = new Vec3(-2, -2, 0); // start off-screen
+    const mouse = new Vec3(-2, -2, 0); 
     const tmp   = new Vec3();
 
     const onMove = (e) => {

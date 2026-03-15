@@ -19,7 +19,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
   useGSAP(() => {
-    // Page-load curtain lift
     gsap.to("#page-cover", {
       scaleY: 0,
       transformOrigin: "top",
@@ -31,10 +30,8 @@ const App = () => {
 
   return (
     <ReactLenis root options={{ lerp: 0.07, duration: 1.5, smoothTouch: false, prevent: isMobile() ? () => true : undefined }}>
-      {/* Scroll progress bar */}
       <ScrollProgress />
 
-      {/* Page cover — lifts on load */}
       <div id="page-cover" style={{
         position: "fixed", inset: 0,
         background: "#0D0D0D",

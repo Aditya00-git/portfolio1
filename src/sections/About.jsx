@@ -34,7 +34,6 @@ and software that solves real problems.`;
   useGSAP(() => {
     const mobile = isMobile();
 
-    // ── Section scale-pin exit — skip on mobile (causes repaint lag) ──
     if (!mobile) {
       gsap.to(sectionRef.current, {
         scale: 0.93,
@@ -47,7 +46,6 @@ and software that solves real problems.`;
       });
     }
 
-    // ── Image clip-path wipe IN ──
     gsap.fromTo(imgWrapRef.current,
       { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)" },
       {
@@ -58,7 +56,6 @@ and software that solves real problems.`;
       }
     );
 
-    // ── Image inner parallax — skip on mobile ──
     if (!mobile) {
       gsap.to(imgRef.current, {
         yPercent: -15,
@@ -72,7 +69,6 @@ and software that solves real problems.`;
       });
     }
 
-    // ── Horizontal marquee drift — skip on mobile ──
     if (!mobile) {
       gsap.to(driftRef.current, {
         xPercent: -20,
@@ -86,7 +82,6 @@ and software that solves real problems.`;
       });
     }
 
-    // ── Stats — counting animation ──
     statsRef.current.forEach((el, i) => {
       if (!el) return;
       const target = stats[i].n;
@@ -114,7 +109,6 @@ and software that solves real problems.`;
       );
     });
 
-    // ── Skills stagger pop ──
     const skillEls = document.querySelectorAll(".skill-pill");
     gsap.fromTo(skillEls,
       { scale: 0.75, opacity: 0 },
@@ -124,7 +118,6 @@ and software that solves real problems.`;
       }
     );
 
-    // ── Section header parallax — skip on mobile ──
     if (!mobile) {
       gsap.to(".about-heading", {
         yPercent: -20,
@@ -148,7 +141,6 @@ and software that solves real problems.`;
     >
       <GradientOrb x="90%" y="20%" size={600} color="#CAFF00" opacity={0.03} />
 
-      {/* ── Header ── */}
       <div className="flex items-center gap-4 mb-4">
         <span className="index-num">02</span>
         <div className="rule flex-1" />
@@ -164,9 +156,7 @@ and software that solves real problems.`;
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
-        {/* ── LEFT: Image + stats ── */}
         <div>
-          {/* Photo with clip-path reveal + inner parallax */}
           <div
             ref={imgWrapRef}
             className="relative rounded-2xl overflow-hidden"
@@ -179,11 +169,9 @@ and software that solves real problems.`;
             >
               <img src={`${import.meta.env.BASE_URL}images/git1.jpg`} className="w-full h-full object-cover" />
             </div>
-            {/* Lime corner accent */}
             <div className="absolute bottom-0 left-0 w-24 h-24" style={{ background: "linear-gradient(135deg,#CAFF00,transparent 60%)", opacity: 0.12 }} />
           </div>
 
-          {/* Animated counting stats */}
           <div className="grid grid-cols-2 gap-3 mt-4">
             {stats.map((s, i) => (
               <div
@@ -204,10 +192,8 @@ and software that solves real problems.`;
           </div>
         </div>
 
-        {/* ── RIGHT: Bio + heatmap + skills ── */}
         <div className="flex flex-col gap-12">
 
-          {/* Horizontal drift watermark */}
           <div className="overflow-hidden select-none pointer-events-none" style={{ marginLeft: "-8vw", marginRight: "-8vw" }}>
             <div ref={driftRef} className="whitespace-nowrap">
               <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(48px,7vw,96px)", color: "#F0EDE6", opacity: 0.035, textTransform: "uppercase" }}>
@@ -216,14 +202,12 @@ and software that solves real problems.`;
             </div>
           </div>
 
-          {/* Bio text — SplitLines clip reveal */}
           <SplitLines
             text={bio}
             className="body-lg"
             style={{ color: "rgba(240,237,230,0.58)", lineHeight: 1.8 }}
           />
 
-          {/* GitHub Activity */}
           <div>
             <p style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(20px,2.5vw,30px)", letterSpacing: "0.06em", textTransform: "uppercase", color: "#F0EDE6", marginBottom: 14 }}>
               GitHub Activity
@@ -238,7 +222,7 @@ and software that solves real problems.`;
             </div>
           </div>
 
-          {/* Tech Stack */}
+     
           <div>
             <p style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(20px,2.5vw,30px)", letterSpacing: "0.06em", textTransform: "uppercase", color: "#F0EDE6", marginBottom: 16 }}>
               Tech Stack

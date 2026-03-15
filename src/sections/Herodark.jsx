@@ -102,15 +102,12 @@ const HeroDark = () => {
       id="home"
       className="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center bg-[#020617]"
     >
-      {/* Network canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0" />
 
-      {/* Beams */}
       <div className="absolute inset-0 opacity-70" style={{ zIndex: 1 }}>
         <BackgroundBeams />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center px-6 select-none">
         <motion.p
           initial={{ opacity: 0, y: 20 }}

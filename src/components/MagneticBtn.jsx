@@ -1,7 +1,5 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-
-// Magnetic pull effect — element is attracted to cursor within radius
 const MagneticBtn = ({ children, strength = 0.35, className = "", style = {}, onClick }) => {
   const el = useRef(null);
 

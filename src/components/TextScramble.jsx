@@ -1,7 +1,5 @@
 import { useRef, useEffect } from "react";
 
-// Hover → scramble letters then resolve to original text
-// Use: <TextScramble text="PROJECTS" tag="h2" className="..." />
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$";
 
 const TextScramble = ({ text, tag: Tag = "span", className = "", style = {}, scrambleOnMount = false }) => {
