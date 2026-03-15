@@ -5,9 +5,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Marquee from "../components/Marquee";
 import SplitLines from "../components/SplitLines";
-import GradientOrb from "../components/GradientOrb";
+
 import { socials, marqueeTech } from "../constants";
 
+/* ─── Social icon paths ─── */
 const ICONS = {
   GitHub: (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -31,13 +32,15 @@ const ICONS = {
   ),
 };
 
+/* handle / username shown on card */
 const HANDLES = {
   GitHub:       "Aditya00-git",
   LinkedIn:     "Aditya Seswani",
   "Twitter / X":"@AdityaSeswani",
-  Instagram:    "@__.adiii3._",
+  Instagram:    "@adityaseswani",
 };
 
+/* ─── Single social card ─── */
 const SocialCard = ({ social }) => {
   const cardRef  = useRef(null);
   const arrowRef = useRef(null);
@@ -87,6 +90,7 @@ const SocialCard = ({ social }) => {
         transition: "background 0.3s",
       }}
     >
+      {/* Lime corner sweep on hover — CSS pseudo via inline child */}
       <div style={{
         position: "absolute", inset: 0, borderRadius: 16,
         background: "linear-gradient(135deg, rgba(202,255,0,0.05) 0%, transparent 50%)",
@@ -95,7 +99,9 @@ const SocialCard = ({ social }) => {
       }} />
 
       <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
+        {/* Icon + text */}
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          {/* Icon circle */}
           <div style={{
             width: 44, height: 44, borderRadius: "50%",
             background: "rgba(202,255,0,0.07)",
@@ -129,6 +135,7 @@ const SocialCard = ({ social }) => {
           </div>
         </div>
 
+        {/* Arrow */}
         <span
           ref={arrowRef}
           style={{
@@ -150,6 +157,7 @@ const SocialCard = ({ social }) => {
 
 gsap.registerPlugin(ScrollTrigger);
 
+/* ─── The actual form — isolated so useForm hook is clean ─── */
 const ContactForm = () => {
   const [state, handleSubmit] = useForm("xvzbryvq");
   const formItemRefs = useRef([]);
@@ -216,6 +224,7 @@ const ContactForm = () => {
                 transition: "opacity 0.3s",
               }}
             />
+            {/* Lime fill line on focus */}
             <div
               className="absolute bottom-[-1px] left-0 h-px"
               style={{
@@ -243,6 +252,7 @@ const ContactForm = () => {
         </div>
       ))}
 
+      {/* Textarea */}
       <div
         ref={el => (formItemRefs.current[3] = el)}
         className="relative border-b pb-3"
@@ -283,6 +293,7 @@ const ContactForm = () => {
         />
       </div>
 
+      {/* Submit */}
       <div ref={el => (formItemRefs.current[4] = el)} className="mt-2">
         <button
           type="submit"
@@ -317,6 +328,7 @@ const ContactForm = () => {
   );
 };
 
+/* ─── Main Contact section ─── */
 const Contact = () => {
   const pinnedRef   = useRef(null);
   const bigTextRef  = useRef(null);
@@ -325,6 +337,7 @@ const Contact = () => {
   const footerRef   = useRef(null);
 
   useGSAP(() => {
+    // Pin CTA
     ScrollTrigger.create({
       trigger: pinnedRef.current,
       start: "top top",
@@ -333,6 +346,7 @@ const Contact = () => {
       pinSpacing: true,
     });
 
+    // Big text parallax within pin
     gsap.to(bigTextRef.current, {
       yPercent: -12,
       ease: "none",
@@ -344,10 +358,12 @@ const Contact = () => {
       },
     });
 
+    // Status dot pulse
     gsap.to(dotRef.current, {
       scale: 1.6, repeat: -1, yoyo: true, duration: 0.9, ease: "power1.inOut",
     });
 
+    // Form section slides up
     if (formSectRef.current) {
       gsap.fromTo(formSectRef.current,
         { y: 60, opacity: 0 },
@@ -358,6 +374,7 @@ const Contact = () => {
       );
     }
 
+    // Footer
     if (footerRef.current) {
       gsap.fromTo(footerRef.current,
         { y: 30, opacity: 0 },
@@ -372,11 +389,11 @@ const Contact = () => {
   return (
     <section id="contact" style={{ background: "#0D0D0D" }}>
 
+      {/* ══ PINNED CTA ══ */}
       <div
         ref={pinnedRef}
         className="min-h-screen flex flex-col justify-between py-16 px-8 md:px-16 overflow-hidden"
       >
-        <GradientOrb x="60%" y="50%" size={700} color="#CAFF00" opacity={0.03} />
 
         <Marquee
           items={marqueeTech}
@@ -417,16 +434,18 @@ const Contact = () => {
             ))}
           </div>
           <a
-            href="mailto:seswaniaditya@gmail.com"
+            href="mailto:adityaseswani@email.com"
             className="label transition-colors duration-300"
             style={{ color: "rgba(240,237,230,0.3)" }}
             onMouseEnter={e => e.target.style.color = "#CAFF00"}
             onMouseLeave={e => e.target.style.color = "rgba(240,237,230,0.3)"}
             data-cursor>
-            seswaniaditya@gmail.com
+            adityaseswani@email.com
           </a>
         </div>
       </div>
+
+      {/* ══ FORM SECTION ══ */}
       <div
         ref={formSectRef}
         className="py-24 px-8 md:px-16"
@@ -439,6 +458,7 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left */}
           <div>
             <h3
               className="text-offwhite uppercase mb-6"
@@ -453,34 +473,38 @@ const Contact = () => {
             <div className="mt-8 flex items-center gap-3">
               <div style={{ width: 20, height: 1, background: "#CAFF00" }} />
               <a
-                href="mailto:seswaniaditya@gmail.com"
+                href="mailto:adityaseswani@email.com"
                 className="label transition-colors duration-300"
                 style={{ color: "rgba(240,237,230,0.4)" }}
                 onMouseEnter={e => e.target.style.color = "#CAFF00"}
                 onMouseLeave={e => e.target.style.color = "rgba(240,237,230,0.4)"}
                 data-cursor
               >
-                seswaniaditya@gmail.com
+                adityaseswani@email.com
               </a>
             </div>
 
+            {/* Social cards grid */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {socials.map((s, i) => (
                 <SocialCard key={i} social={s} />
               ))}
             </div>
           </div>
+
+          {/* Right — form */}
           <ContactForm />
         </div>
       </div>
 
+      {/* ══ FOOTER ══ */}
       <div
         ref={footerRef}
         className="px-8 md:px-16 py-8 flex flex-col md:flex-row items-center justify-between gap-4"
         style={{ borderTop: "1px solid rgba(240,237,230,0.06)" }}
       >
         <span className="label text-muted">© 2026 Aditya Seswani</span>
-        <span className="label text-muted">Build with 🩷</span>
+        <span className="label text-muted">Built with React + GSAP + Lenis</span>
         <span className="label text-muted">CS Undergraduate · India</span>
       </div>
     </section>

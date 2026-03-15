@@ -80,7 +80,7 @@ export default function Experience() {
       tl.to(lineRef.current, { scaleX: 1, ease: "none", duration: n });
 
       experience.forEach((_, i) => {
-        const insertTime = (i + 0.55) / n * n;   // in tl "duration" units
+        const insertTime = (i + 0.55) / n * n;  
 
         tl.to(dotRefs.current[i],
           { scale: 1, autoAlpha: 1, duration: 0.25, ease: "back.out(2)" },

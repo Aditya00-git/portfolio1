@@ -140,7 +140,7 @@ const Hero = () => {
       </div>
 
       <div ref={badgeRef} className="absolute top-24 right-8 md:right-16 label text-muted">
-        2025 — PRESENT
+        2026 — PRESENT
       </div>
 
       <div className="relative select-none mb-0" style={{ zIndex: 1 }}>

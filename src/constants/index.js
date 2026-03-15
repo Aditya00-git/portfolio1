@@ -6,7 +6,7 @@ export const projects = [
     description: "Fully offline AI assistant. Local LLMs via Ollama, speech recognition, desktop automation. No internet required.",
     href: "https://github.com/Aditya00-git/JARVIS",
     tags: ["Python", "PyQt", "Ollama", "SpeechRecognition", "PyAutoGUI"],
-    year: "2024",
+    year: "2026",
     type: "AI / Automation",
   },
   {
@@ -16,7 +16,7 @@ export const projects = [
     description: "Full-stack travel agency platform with booking system, dynamic routing, and a PHP + MySQL backend.",
     href: "https://aviprotravels.kesug.com/",
     tags: ["HTML", "CSS", "PHP", "MySQL"],
-    year: "2024",
+    year: "2026",
     type: "Full Stack Web",
   },
   {
@@ -26,7 +26,7 @@ export const projects = [
     description: "CLI tool that analyzes codebases — maps dependencies, counts lines, detects languages, generates reports.",
     href: "https://github.com/Aditya00-git/CodeScope",
     tags: ["Python", "CLI"],
-    year: "2024",
+    year: "2026",
     type: "Developer Tool",
   },
   {
@@ -36,7 +36,7 @@ export const projects = [
     description: "Community platform where developers share failures and lessons. Auth, post feeds, comments — built on Node + Mongo.",
     href: "https://failforward.onrender.com/",
     tags: ["Node.js", "MongoDB", "JavaScript"],
-    year: "2024",
+    year: "2026",
     type: "Full Stack Web",
   },
   {
@@ -46,7 +46,7 @@ export const projects = [
     description: "ML-powered app detecting fake news in education. NLP models, labeled datasets, deployed via Streamlit.",
     href: "https://education-fake-news-detector.streamlit.app/",
     tags: ["Python", "Streamlit", "NLP", "ML"],
-    year: "2024",
+    year: "2026",
     type: "Machine Learning",
   },
 ];
@@ -56,7 +56,7 @@ export const experience = [
     id: "01",
     role: "Web Development Intern",
     company: "ShadowFox",
-    period: "2024 — Present",
+    period: "2026 — Present",
     status: "CURRENT",
     desc: "Virtual internship. Real-time project tasks across beginner to advanced levels, mentor sessions, final project delivery.",
   },
@@ -64,7 +64,7 @@ export const experience = [
     id: "02",
     role: "IBM SkillBuild Intern",
     company: "Edunet Foundation",
-    period: "2024",
+    period: "2026",
     status: "COMPLETED",
     desc: "Industry-ready technical skills through structured learning and hands-on project-based training under IBM SkillBuild.",
   },
