@@ -434,13 +434,13 @@ const Contact = () => {
             ))}
           </div>
           <a
-            href="mailto:adityaseswani@email.com"
+            href="mailto:seswaniaditya@gmail.com"
             className="label transition-colors duration-300"
             style={{ color: "rgba(240,237,230,0.3)" }}
             onMouseEnter={e => e.target.style.color = "#CAFF00"}
             onMouseLeave={e => e.target.style.color = "rgba(240,237,230,0.3)"}
             data-cursor>
-            adityaseswani@email.com
+            seswaniaditya@gmail.com
           </a>
         </div>
       </div>
@@ -473,18 +473,16 @@ const Contact = () => {
             <div className="mt-8 flex items-center gap-3">
               <div style={{ width: 20, height: 1, background: "#CAFF00" }} />
               <a
-                href="mailto:adityaseswani@email.com"
+                href="mailto:seswaniaditya@gmail.com"
                 className="label transition-colors duration-300"
                 style={{ color: "rgba(240,237,230,0.4)" }}
                 onMouseEnter={e => e.target.style.color = "#CAFF00"}
                 onMouseLeave={e => e.target.style.color = "rgba(240,237,230,0.4)"}
                 data-cursor
               >
-                adityaseswani@email.com
+                seswaniaditya@gmail.com
               </a>
             </div>
-
-            {/* Social cards grid */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {socials.map((s, i) => (
                 <SocialCard key={i} social={s} />
@@ -492,12 +490,10 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right — form */}
           <ContactForm />
         </div>
       </div>
 
-      {/* ══ FOOTER ══ */}
       <div
         ref={footerRef}
         className="px-8 md:px-16 py-8 flex flex-col md:flex-row items-center justify-between gap-4"

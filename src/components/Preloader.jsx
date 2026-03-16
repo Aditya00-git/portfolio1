@@ -25,8 +25,6 @@ const Preloader = ({ onComplete }) => {
         });
       },
     });
-
-    // Sweep clipPath rect left to right — simulates pen writing
     tl.fromTo(
       clipRectRef.current,
       { attr: { width: 0 } },
