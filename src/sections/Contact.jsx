@@ -37,7 +37,7 @@ const HANDLES = {
   GitHub:       "Aditya00-git",
   LinkedIn:     "Aditya Seswani",
   "Twitter / X":"@AdityaSeswani",
-  Instagram:    "@adityaseswani",
+  Instagram:    "@__.adiii3._",
 };
 
 /* ─── Single social card ─── */
